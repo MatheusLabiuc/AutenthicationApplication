@@ -1,0 +1,19 @@
+﻿@page
+@model AspNetCoreAuth.Pages.LogoutModel
+@{
+}
+
+<form method="post">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="offset-2 col-sm-12 col-md-12 col-lg-4">
+                <p class="">Tem certeza que deseja sair?</p>
+                <p>
+                    <button class="btn btn-primary" asp-page-handler="Logout">Sim</button>
+                    <button class="btn btn-light m-lg-5 border-dark" asp-page-handler="DontLogout">Não</button>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</form>
