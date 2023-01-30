@@ -1,14 +1,80 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.AspNetCore.Identity;
 @model AspNetCoreAuth.Pages.LogoutModel
 @{
 }
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
 
+      
+@if (SignInManager.IsSignedIn(User))
+{
+    await SignInManager.SignOutAsync();
+    Response.Redirect("Login");
+
+}
+
+
+
+@*<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Deseja sair?</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+
+
+@*@section Scripts{
 <form method="post">
-    <div class="container mt-5">
+    <script>
+        function ConfirmSec(){
+            Swal.fire({
+                title: 'Você deseja mesmo sair?',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                cancelButtonText: `Não`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    
+                    window.location = "Login";
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+            }
+    </script>
+</form>
+}*@
+
+
+@*<form method="post">
+    <div class=" container mt-5">
         <div class="row justify-content-center">
-            <div class="offset-2 col-sm-12 col-md-12 col-lg-4">
+            <div class=" offset-2 col-sm-12 col-md-12 col-lg-4">
                 <p class="">Tem certeza que deseja sair?</p>
-                <p>
+                <p class="">
                     <button class="btn btn-primary" asp-page-handler="Logout">Sim</button>
                     <button class="btn btn-light m-lg-5 border-dark" asp-page-handler="DontLogout">Não</button>
                 </p>
@@ -16,4 +82,5 @@
             </div>
         </div>
     </div>
-</form>
+</form>*@
+

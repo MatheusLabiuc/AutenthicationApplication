@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
 namespace AspNetCoreAuth.Pages
 {
     public class LogoutModel : PageModel
@@ -17,7 +18,6 @@ namespace AspNetCoreAuth.Pages
         public void OnGet()
         {
         }
-
         public async Task<IActionResult> OnPostLogoutAsync()
         {
             await signInManager.SignOutAsync();
